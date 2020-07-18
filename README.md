@@ -27,7 +27,7 @@ Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da disc
 
 ## Comandos
 
-##### Cadastro de pedidos:
+#### Cadastro de pedidos:
 - **/cardapio**
 > Obtém informações de comidas e bebidas disponíveis, e seus respectivos comandos para adicionar a comanda do usuário.
 
@@ -52,12 +52,12 @@ Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da disc
 - **/entrega**
 >Obtém informações do trânsito e confirma ao bot endereço de entrega.
 
-##### Obter informações sobre clima:
+#### Obter informações sobre clima:
 
 - **/clima**
 > Bot solicita nome da cidade para recuperar informações de clima/temperatura.
 
-##### Outros comandos:
+#### Outros comandos:
 
 - **/start**
 > Inicia iteração com o Bot
