@@ -24,10 +24,17 @@ import br.com.fiap.bot.telegram.service.ClimatempoService;
 public class TesteBot {
 	private static final String ENDLINE = System.getProperty("line.separator");
 	private static final String TOKEN_TELEGRAM = "1130341206:AAFoWwB4Vhcax1QFw2obA8Ox64j9vNEbR44";
-	private static Double VALOR_NOTA = 0.00;
+
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 	static Locale ptBr = new Locale("pt", "BR");
+
+	private static Double VALOR_NOTA = 0.00;
+	private static Boolean PEDIDO_FINAL = false;
+	private static int PEDIDO_FRANGO = 0;
+	private static int PEDIDO_CARNE = 0;
+	private static int PEDIDO_COCA = 0;
+	private static int PEDIDO_AGUA = 0;
 
 	public static void main(String[] args) {
 		bot = new TelegramBot(TOKEN_TELEGRAM);
@@ -56,30 +63,46 @@ public class TesteBot {
 					executaJornadaData(update);
 					break;
 				case "/cardapio":
-				case "cardapio":
 					executaJornadaCardapio(update);
 					break;
 				case "/frango":
+					PEDIDO_FRANGO += 1;
 					executaJornadaSelecao(update, 20.00);
 					break;
 				case "/carne":
+					PEDIDO_CARNE += 1;
 					executaJornadaSelecao(update, 25.00);
 					break;
 				case "/cocacola":
+					PEDIDO_COCA += 1;
 					executaJornadaSelecao(update, 5.00);
 					break;
 				case "/agua":
+					PEDIDO_AGUA += 1;
 					executaJornadaSelecao(update, 3.00);
 					break;
 				case "/comanda":
+					PEDIDO_FINAL = true;
 					executaJornadaComanda(update, VALOR_NOTA);
 					break;
 				case "/entrega":
-					// Consultar informações de trânsito
+					if (PEDIDO_FINAL) {
+						// Consultar informações de trânsito
+					} else {
+						bot.execute(new SendMessage(update.message().chat().id(),
+								"Favor encerrar sua comanda antes de solicitar a entrega do pedido."));
+					}
+
 					break;
 				case "/retirar":
-					bot.execute(new SendMessage(update.message().chat().id(), "A FIAP Food agradece a preferência." + ENDLINE + ENDLINE + 
-							"Quando chegar no restaurante basta apresentar o código: 1234."));
+					if (PEDIDO_FINAL) {
+						bot.execute(new SendMessage(update.message().chat().id(), "A FIAP Food agradece a preferência."
+								+ ENDLINE + ENDLINE + "Quando chegar no restaurante basta apresentar o código: 1234."));
+					} else {
+						bot.execute(new SendMessage(update.message().chat().id(),
+								"Favor encerrar sua comanda antes de solicitar a retirada do pedido."));
+					}
+
 					break;
 				default:
 					bot.execute(new SendMessage(update.message().chat().id(), "Opção não encontrada!"));
@@ -166,12 +189,26 @@ public class TesteBot {
 
 	private static void executaJornadaComanda(Update update, double valorTotal) {
 		String valorTotalFormatado = NumberFormat.getCurrencyInstance(ptBr).format(VALOR_NOTA);
-
+		String pedido = "";
+		
 		if (valorTotal <= 0.00) {
 			bot.execute(new SendMessage(update.message().chat().id(),
 					"Sua comanda ainda esta vazia, deseja ver o cardápio? Se sim, digite /cardapio."));
 		} else {
-			bot.execute(new SendMessage(update.message().chat().id(), "O seu pedido ficou em: " + valorTotalFormatado
+			if (PEDIDO_FRANGO > 0) {
+				pedido = "Frango: " + Integer.toString(PEDIDO_FRANGO) + ENDLINE;
+			}
+			if (PEDIDO_CARNE > 0) {
+				pedido = pedido + "Carne:  " + Integer.toString(PEDIDO_CARNE) + ENDLINE;
+			}
+			if (PEDIDO_AGUA > 0) {
+				pedido = pedido + "Água: " + Integer.toString(PEDIDO_AGUA) + ENDLINE;
+			}
+			if (PEDIDO_COCA > 0) {
+				pedido = pedido + "Coca-cola: " + Integer.toString(PEDIDO_COCA) + ENDLINE;
+			}
+
+			bot.execute(new SendMessage(update.message().chat().id(), "COMANDA: " + ENDLINE + ENDLINE + pedido + ENDLINE +  "O seu pedido ficou em: " + valorTotalFormatado
 					+ ENDLINE + ENDLINE
 					+ "Caso o seu pedido seja para entrega, digite /entrega para calcularmos a distância, se for retirar no restaurante digite /retirar."));
 		}
