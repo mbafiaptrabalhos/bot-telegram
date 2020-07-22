@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.Random;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
@@ -95,9 +96,11 @@ public class TesteBot {
 
 					break;
 				case "/retirar":
+					Random random = new Random();
+
 					if (PEDIDO_FINAL) {
 						bot.execute(new SendMessage(update.message().chat().id(), "A FIAP Food agradece a preferência."
-								+ ENDLINE + ENDLINE + "Quando chegar no restaurante basta apresentar o código: 1234."));
+								+ ENDLINE + ENDLINE + "Quando chegar no restaurante basta apresentar o código: " +  random.nextInt(100) + "."));
 					} else {
 						bot.execute(new SendMessage(update.message().chat().id(),
 								"Favor encerrar sua comanda antes de solicitar a retirada do pedido."));
