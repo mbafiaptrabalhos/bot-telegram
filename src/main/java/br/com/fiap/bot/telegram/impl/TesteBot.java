@@ -33,17 +33,15 @@ public class TesteBot {
 				System.out.println(update.updateId() + " Recebeu: " + update.message().text());
 				String textoDigitado = update.message().text().toLowerCase();
 
-				if (textoDigitado.contains("/help") || textoDigitado.contains("/start")) {
+				if (textoDigitado.matches(".*(?i)/help.*") || textoDigitado.matches(".*(?i)/start.*")) {
 					executaJornadaHelpCommand(update);
 				}
 
-				if (textoDigitado.contains("/clima")) {
+				if (textoDigitado.matches(".*(?i)/clima.*")) {
 					executaJornadaClimatempo(update);
 				}
 				
-			
-
-				if (textoDigitado.contains("/data")) {
+				if (textoDigitado.matches(".*(?i)/data.*")) {
 					executaJornadaData(update);
 				}
 			});
@@ -58,8 +56,8 @@ public class TesteBot {
 	}
 
 	private static void executaJornadaHelpCommand(Update update) {
-		String textoResposta = "/clima - Obtêm informações referente a temperatura atual" + ENDLINE
-				+ "/data - Obtêm informações do dia atual" + ENDLINE;
+		String textoResposta = "/clima - Obtï¿½m informaï¿½ï¿½es referente a temperatura atual" + ENDLINE
+				+ "/data - Obtï¿½m informaï¿½ï¿½es do dia atual" + ENDLINE;
 
 		bot.execute(new SendMessage(update.message().chat().id(), textoResposta));
 	}
