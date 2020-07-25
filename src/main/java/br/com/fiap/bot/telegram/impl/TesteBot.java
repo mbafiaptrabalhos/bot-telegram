@@ -25,7 +25,7 @@ import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
 	private static final String ENDLINE = System.getProperty("line.separator");
-	private static final String TOKEN_TELEGRAM = "1272262215:AAEsDyneOcuI4ZngPqM1iuM-HtvG6s0EZO0";
+	private static final String TOKEN_TELEGRAM = "SEU_TOKEN";
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 	static Locale ptBr = new Locale("pt", "BR");
@@ -36,7 +36,6 @@ public class TesteBot {
 	private static int PEDIDO_CARNE = 0;
 	private static int PEDIDO_COCA = 0;
 	private static int PEDIDO_AGUA = 0;
-	private static boolean TIME = false;
 
 	public static void main(String[] args) {
 		bot = new TelegramBot(TOKEN_TELEGRAM);
@@ -59,7 +58,6 @@ public class TesteBot {
 					executaJornadaHelpCommand(update);
 					break;
 				case "/clima":
-					TIME = true;
 					executaJornadaClimatempo(update);
 					break;
 				case "/data":
@@ -101,16 +99,10 @@ public class TesteBot {
 					}
 					break;
 				case "/default":
-					System.out.println(textoDigitado);
-					if (!TIME) {
-						bot.execute(new SendMessage(update.message().chat().id(), "Opção não encontrada!"));
-					} else {
-						TIME = false;
-					}
+					bot.execute(new SendMessage(update.message().chat().id(), "Opção não encontrada!"));
 					break;
 				}
 			});
-			updates.clear();
 		}
 
 	}
