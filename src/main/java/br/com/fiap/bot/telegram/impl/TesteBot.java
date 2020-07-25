@@ -18,12 +18,13 @@ import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
 	private static final String ENDLINE = System.getProperty("line.separator");
-	private static final String TOKEN_TELEGRAM = "1272262215:AAEsDyneOcuI4ZngPqM1iuM-HtvG6s0EZO0";
+	private static final String TOKEN_TELEGRAM = "SEU_TOKEN";
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 
 	public static void main(String[] args) {
 		bot = new TelegramBot(TOKEN_TELEGRAM);
+		System.out.println("telegram ok");
 		while (true) {
 			GetUpdates getUpdates = new GetUpdates().limit(100).offset(messageOffset);
 			GetUpdatesResponse updatesResponse = bot.execute(getUpdates);
@@ -58,8 +59,8 @@ public class TesteBot {
 	}
 
 	private static void executaJornadaHelpCommand(Update update) {
-		String textoResposta = "/clima - Obtêm informações referente a temperatura atual" + ENDLINE
-				+ "/data - Obtêm informações do dia atual" + ENDLINE;
+		String textoResposta = "/clima - Obtï¿½m informaï¿½ï¿½es referente a temperatura atual" + ENDLINE
+				+ "/data - Obtï¿½m informaï¿½ï¿½es do dia atual" + ENDLINE;
 
 		bot.execute(new SendMessage(update.message().chat().id(), textoResposta));
 	}
