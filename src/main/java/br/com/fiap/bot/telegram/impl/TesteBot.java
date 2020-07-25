@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.Random;
 
+import br.com.fiap.bot.telegram.util.Filtro;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ChatAction;
@@ -51,7 +52,7 @@ public class TesteBot {
 				// Mensagem de Digitando
 				bot.execute(new SendChatAction(update.message().chat().id(), ChatAction.typing.name()));
 
-				switch (textoDigitado.toLowerCase()) {
+				switch (Filtro.filtroTexto(textoDigitado)) {
 				case "/help":
 				case "/start":
 					executaJornadaHelpCommand(update);
