@@ -24,8 +24,9 @@ import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
-	private static final String ENDLINE = System.getProperty("line.separator");
+	//INSERIR TOKEN DO BOT
 	private static final String TOKEN_TELEGRAM = "SEU_TOKEN";
+	private static final String ENDLINE = System.getProperty("line.separator");
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 	static Locale ptBr = new Locale("pt", "BR");
@@ -206,7 +207,7 @@ public class TesteBot {
 
 			bot.execute(new SendMessage(update.message().chat().id(), "COMANDA: " + ENDLINE + ENDLINE + pedido + ENDLINE +  "O seu pedido ficou em: " + valorTotalFormatado
 					+ ENDLINE + ENDLINE
-					+ "Caso o seu pedido seja para entrega, digite /entrega para calcularmos a distância, se for retirar no restaurante digite /retirar."));
+					+ "Para obter a senha de retirada do pedido no restaurante digite /retirar."));
 		}
 	}
 }
