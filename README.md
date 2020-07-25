@@ -1,5 +1,5 @@
 # bot-telegram
-Bot para realizaÁ„o de pedidos na FIAP Food, desenvolvido para avaliaÁ„o da disciplina de Java Platform.
+Bot para realiza√ß√£o de pedidos na FIAP Food, desenvolvido para avalia√ß√£o da disciplina de Java Platform.
 
 ## Integrantes
 
@@ -19,51 +19,48 @@ Bot para realizaÁ„o de pedidos na FIAP Food, desenvolvido para avaliaÁ„o da disc
 ## Funcionalidades
 
 - Cadastro de pedidos para entrega ou retirada.
-- VisualizaÁ„o das informaÁıes do card·pio disponÌvel.
-- Acesso a comanda com informaÁıes gerais sobre o pedido.
-- InformaÁıes de clima por cidade ou resumo do clima no Brasil.
-- InformaÁıes do tr‚nsito em tempo real.
+- Visualiza√ß√£o das informa√ß√µes do card√°pio dispon√≠vel.
+- Acesso a comanda com informa√ß√µes gerais sobre o pedido.
+- Informa√ß√µes de clima por cidade ou resumo do clima no Brasil.
+- Informa√ß√µes do tr√¢nsito em tempo real.
 
 
 ## Comandos
 
 ### Cadastro de pedidos:
 - **/cardapio**
-> ObtÈm informaÁıes de comidas e bebidas disponÌveis, e seus respectivos comandos para adicionar a comanda do usu·rio.
+> Obt√©m informa√ß√µes de comidas e bebidas dispon√≠veis, e seus respectivos comandos para adicionar a comanda do usu√°rio.
 
 - **/frango**
-> Adiciona frango ao pedido do usu·rio.
+> Adiciona frango ao pedido do usu√°rio.
 
 - **/carne**
-> Adiciona carne ao pedido do usu·rio.
+> Adiciona carne ao pedido do usu√°rio.
 
 - **/cocacola**
->Adiciona coca-cola ao pedido do usu·rio.
+>Adiciona coca-cola ao pedido do usu√°rio.
 
 - **/agua**
->Adiciona ·gua ao pedido do usu·rio.
+>Adiciona √°gua ao pedido do usu√°rio.
 
 - **/comanda**
->ObtÈm informaÁıes dos produtos adicionados ‡ comanda, e o valor total.
+>Obt√©m informa√ß√µes dos produtos adicionados √† comanda, e o valor total.
 
 - **/retirar**
->ObtÈm cÛdigo do pedido para retirada no restaurante.
+>Obt√©m c√≥digo do pedido para retirada no restaurante.
 
-- **/entrega**
->ObtÈm informaÁıes do tr‚nsito e confirma ao bot endereÁo de entrega.
-
-### Obter informaÁıes sobre clima:
+### Obter informa√ß√µes sobre clima:
 
 - **/clima**
-> Bot solicita nome da cidade para recuperar informaÁıes de clima/temperatura.
+> Bot solicita nome da cidade para recuperar informa√ß√µes de clima/temperatura.
 
 ### Outros comandos:
 
 - **/start**
-> Inicia iteraÁ„o com o Bot
+> Inicia itera√ß√£o com o Bot
 
 - **/help**
->ObtÈm comandos disponÌveis para interaÁ„o com o bot.
+>Obt√©m comandos dispon√≠veis para intera√ß√£o com o bot.
 
    [Java 11]: <https://www.oracle.com/java/technologies/javase-jdk11-downloads.html>
    [Maven]: <https://maven.apache.org/>
