@@ -36,6 +36,7 @@ public class TesteBot {
 	private static int PEDIDO_CARNE = 0;
 	private static int PEDIDO_COCA = 0;
 	private static int PEDIDO_AGUA = 0;
+	private static boolean TIME = false;
 
 	public static void main(String[] args) {
 		bot = new TelegramBot(TOKEN_TELEGRAM);
@@ -58,6 +59,7 @@ public class TesteBot {
 					executaJornadaHelpCommand(update);
 					break;
 				case "/clima":
+					TIME = true;
 					executaJornadaClimatempo(update);
 					break;
 				case "/data":
@@ -101,17 +103,23 @@ public class TesteBot {
 					if (PEDIDO_FINAL) {
 						bot.execute(new SendMessage(update.message().chat().id(), "A FIAP Food agradece a preferência."
 								+ ENDLINE + ENDLINE + "Quando chegar no restaurante basta apresentar o código: " +  random.nextInt(100) + "."));
+						VALOR_NOTA = 0.00;
 					} else {
 						bot.execute(new SendMessage(update.message().chat().id(),
 								"Favor encerrar sua comanda antes de solicitar a retirada do pedido."));
 					}
-
 					break;
-				default:
-					bot.execute(new SendMessage(update.message().chat().id(), "Opção não encontrada!"));
+				case "/default":
+					System.out.println(textoDigitado);
+					if (!TIME) {
+						bot.execute(new SendMessage(update.message().chat().id(), "Opção não encontrada!"));
+					} else {
+						TIME = false;
+					}
 					break;
 				}
 			});
+			updates.clear();
 		}
 
 	}
@@ -153,7 +161,7 @@ public class TesteBot {
 
 		bot.execute(new SendChatAction(update.message().chat().id(), ChatAction.typing.name()));
 		bot.execute(new SendMessage(update.message().chat().id(),
-				"Digite a cidade desejada ou \"Brasil\" para obter um resumo"));
+				"Digite a cidade desejada para obter um resumo"));
 		GetUpdates getUpdates = new GetUpdates().limit(100).offset(messageOffset++);
 
 		while (cidade == null) {

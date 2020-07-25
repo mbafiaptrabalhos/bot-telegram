@@ -9,7 +9,7 @@ public class Filtro {
                 "frango","carne","cocacola","agua","comanda","entrega","retirar");
 
     public static String filtroTexto(String texto) {
-        String retorno = "opcao default";
+        String retorno = "/default";
         for (String comando : listaComando) {
             if (texto.matches(".*(?i)/"+ comando + ".*")) {
                 retorno = texto.replaceAll(".*(?i)/"+ comando + ".*", "/" + comando);
