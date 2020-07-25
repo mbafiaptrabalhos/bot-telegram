@@ -24,7 +24,7 @@ import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
 	private static final String ENDLINE = System.getProperty("line.separator");
-	private static final String TOKEN_TELEGRAM = "SEU_TOKEN";
+	private static final String TOKEN_TELEGRAM = "1136362167:AAGauHGMgJtfX_r5a-ThatAysEm-KrEJtfo";
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 	static Locale ptBr = new Locale("pt", "BR");
@@ -38,7 +38,7 @@ public class TesteBot {
 
 	public static void main(String[] args) {
 		bot = new TelegramBot(TOKEN_TELEGRAM);
-		System.out.println("telegram ok");
+		System.out.println("TELEGRAM RUN");
 		while (true) {
 			GetUpdates getUpdates = new GetUpdates().limit(100).offset(messageOffset);
 			GetUpdatesResponse updatesResponse = bot.execute(getUpdates);
