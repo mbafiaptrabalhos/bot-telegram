@@ -25,7 +25,7 @@ import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
 	private static final String ENDLINE = System.getProperty("line.separator");
-	private static final String TOKEN_TELEGRAM = "1136362167:AAGauHGMgJtfX_r5a-ThatAysEm-KrEJtfo";
+	private static final String TOKEN_TELEGRAM = "1272262215:AAEsDyneOcuI4ZngPqM1iuM-HtvG6s0EZO0";
 	private static TelegramBot bot;
 	private static int messageOffset = 0;
 	static Locale ptBr = new Locale("pt", "BR");
@@ -87,15 +87,6 @@ public class TesteBot {
 				case "/comanda":
 					PEDIDO_FINAL = true;
 					executaJornadaComanda(update, VALOR_NOTA);
-					break;
-				case "/entrega":
-					if (PEDIDO_FINAL) {
-						// Consultar informações de trânsito
-					} else {
-						bot.execute(new SendMessage(update.message().chat().id(),
-								"Favor encerrar sua comanda antes de solicitar a entrega do pedido."));
-					}
-
 					break;
 				case "/retirar":
 					Random random = new Random();
@@ -173,8 +164,10 @@ public class TesteBot {
 				cidade = findFirst.get().message().text();
 				System.out.println("Cidade: " + cidade);
 				try {
+					bot.execute(new SendChatAction(update.message().chat().id(), ChatAction.typing.name()));
 					bot.execute(new SendMessage(update.message().chat().id(),
 							ClimatempoService.obtemDadosClimaFormatado(cidade)));
+					messageOffset++;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
