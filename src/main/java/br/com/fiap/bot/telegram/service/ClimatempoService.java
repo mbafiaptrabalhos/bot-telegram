@@ -48,7 +48,7 @@ public class ClimatempoService {
 		if (optionalCidade.isPresent()) {
 			return optionalCidade.get().getId();
 		} else {
-			throw new Exception("Cidade não encontrada");
+			throw new Exception("Cidade nï¿½o encontrada");
 		}
 
 	}
@@ -73,7 +73,7 @@ public class ClimatempoService {
 
 		ClimaCidade climaAtual = obtemDadosClima(cidade);
 		String clima = "Cidade: " + climaAtual.getName() + ENDLINE + "Temperatura: "
-				+ climaAtual.getDadosClima().getTemperature() + ENDLINE + "Sensação: "
+				+ climaAtual.getDadosClima().getTemperature() + ENDLINE + "SensaÃ§Ã£o: "
 				+ climaAtual.getDadosClima().getSensation() + ENDLINE + climaAtual.getDadosClima().getCondition();
 
 		return clima;
