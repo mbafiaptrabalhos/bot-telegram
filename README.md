@@ -16,6 +16,10 @@ Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da 
 * [Java Telegram BOT API]
 * [API Climatempo]
 
+## Uso
+- Utilize o BotFather para criação do seu bot e geração do Token.
+- Preencher variável TOKEN_TELEGRAM da classe TesteBot com o token gerado pelo BotFather.
+
 ## Funcionalidades
 
 - Cadastro de pedidos para entrega ou retirada.
