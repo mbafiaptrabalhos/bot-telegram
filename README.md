@@ -22,8 +22,6 @@ Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da 
 - Visualização das informações do cardápio disponível.
 - Acesso a comanda com informações gerais sobre o pedido.
 - Informações de clima por cidade ou resumo do clima no Brasil.
-- Informações do trânsito em tempo real.
-
 
 ## Comandos
 
