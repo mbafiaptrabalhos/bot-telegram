@@ -24,8 +24,7 @@ import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import br.com.fiap.bot.telegram.service.ClimatempoService;
 
 public class TesteBot {
-	//INSERIR TOKEN DO BOT
-	private static final String TOKEN_TELEGRAM = "SEU_TOKEN";
+	private static final String TOKEN_TELEGRAM = "1323344529:AAGPTVgPMx9VsMBfRQd_16PL2lFio8SoHrY";
 	private static final String ENDLINE = System.getProperty("line.separator");
 	private static TelegramBot bot;
 	private static int messageOffset = 0;

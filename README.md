@@ -1,5 +1,5 @@
 # bot-telegram
-Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da disciplina de Java Platform.
+Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da disciplina de Java Platform. Para utilizar adicione o Bot @fiapFoodBot aos seus contatos.
 
 ## Integrantes
 
@@ -15,10 +15,6 @@ Bot para realização de pedidos na FIAP Food, desenvolvido para avaliação da 
 * [Maven]
 * [Java Telegram BOT API]
 * [API Climatempo]
-
-## Uso
-- Utilize o BotFather para criação do seu bot e geração do Token.
-- Preencher variável TOKEN_TELEGRAM da classe TesteBot com o token gerado pelo BotFather.
 
 ## Funcionalidades
 
